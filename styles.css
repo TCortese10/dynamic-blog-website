@@ -9,10 +9,6 @@ body{
     font-family: 'Verdana', sans-serif;;
 }
 
-::selection{
-    background: black;
-    color: white;
-}
 .navbar{
     width: 100%;
     height: 60px;
@@ -23,7 +19,7 @@ body{
     justify-content: space-between;
     align-items: center;
     padding: 0 5vw;
-    background: white;
+    background: whitesmoke;
     z-index: 10;
    
 }
@@ -43,5 +39,20 @@ body{
     text-decoration: none;
     color: black;
     font-size: large;
+
+}
+
+.text{
+    margin-top: 60px;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background: url(coffee.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    color: white;
+    text-align: center;
 
 }
