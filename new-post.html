@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Post</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="navbar">
+        <div class="header">Turners Dynamic Blog Website</div>
+        <ul class="link-container">
+            <li class="link-item"><a href="index.html" class="link">Home</a></li>
+            <li class="link-item"><a href="new-post.html" class="link">Add Post</a></li>
+        </ul>
+    </nav>
+
+    <section id="form" class="form-section">
+        <h1 class="form-heading">Create a New Blog Post</h1>
+        <form action="#" method="POST" id="postForm">
+            <label for="postTitle" class="form-label">Blog Title:</label>
+            <input type="text" id="postTitle" placeholder="Enter title here..." required><br>
+
+            <label for="postContent" class="form-label">Content:</label>
+            <textarea id="postContent" placeholder="Write about your blog here..." required></textarea><br>
+            
+            <label for="postImage" class="form-label">Add URL for your posts image</label>
+            <input type="text" id="postImage" placeholder="instert URL here...">,<br>
+            
+            <button type="submit">Add Post</button>
+        </form>
+    </section>
+
+    <script src="app.js"></script>
+    <script>
+        document.getElementById('postForm').onsubmit = function (e) {
+            e.preventDefault();
+            const title = document.getElementById('postTitle').value.trim();
+            const content = document.getElementById('postContent').value.trim();
+            const image = document.getElementById('postImage').value.trim();
+
+            if (!title || !content) {
+                alert("Title and content are required!");
+                return;
+            }
+            addPost({ title, content, image });
+            window.location.href = "index.html";
+        }
+    </script>
+    
+</body>
+</html>

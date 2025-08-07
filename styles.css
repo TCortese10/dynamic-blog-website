@@ -6,7 +6,7 @@
 body{
     width: 100%;
     position: relative;
-    font-family: 'Verdana', sans-serif;;
+    font-family: 'Verdana', sans-serif;
 }
 
 .navbar{
@@ -87,3 +87,63 @@ body{
     text-decoration: none;
 }
 
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+}
+
+.form-heading {
+    width: 100%;
+    height: calc(100vh - 60px);
+    background: url(coffee.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    color: white;
+    text-align: center;
+}
+
+form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.form-label {
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    font-size: 30px;
+    
+}
+
+form input[type="text"],
+form textarea {
+    font-size: 20px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    width: 75%;
+    box-sizing: border-box;
+    max-width: 75%;
+    font-family: 'Verdana', sans-serif;
+}
+
+form button[type="submit"] {
+    margin-top: 16px;
+    padding: 10px 24px;
+    font-size: 20px;
+    border: none;
+    background: #222;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 25%;
+}
