@@ -91,7 +91,7 @@ body{
 .form-section {
     display: flex;
     flex-direction: column;
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 .form-heading {
@@ -137,6 +137,18 @@ form textarea {
 }
 
 form button[type="submit"] {
+    margin-top: 16px;
+    padding: 10px 24px;
+    font-size: 20px;
+    border: none;
+    background: #222;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 25%;
+}
+
+.deleteBtn{
     margin-top: 16px;
     padding: 10px 24px;
     font-size: 20px;

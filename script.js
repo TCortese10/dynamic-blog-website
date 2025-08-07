@@ -13,14 +13,14 @@ function addPost(post) {
     posts.push(post);
     savePosts(posts);
 }
-
+// gets posts saved in local storage
 function displayPosts() {
     const posts = getPosts();
     const container = document.getElementById("blogs");
 
     container.innerHTML = "";
 
-
+    // loops through each post and creates cards
     posts.forEach(post => {
         const card = document.createElement("div");
         card.className = "blog-card";
@@ -40,16 +40,35 @@ function displayPosts() {
 
         const content = document.createElement("p");
         content.className = "blog-information";
-        content.textContent = post.content.length > 200? post.content.substring(0, 200) + "..." : post.content;
+        content.textContent = post.content;
         card.appendChild(content);
 
         const btn = document.createElement("a");
-        btn.href = "#";
+        btn.href = `post.html?id=${post.id}`;
         btn.className = "btn-read";
-        btn.textContent = "View Post";
+        btn.textContent = "Edit Post";
         card.appendChild(btn);
 
         container.appendChild(card);
 
     });
+}
+
+function getPost(id) {
+    return getPosts().find(post => post.id === id);
+}
+//updates and saves posts
+function updatePost(id, updatedPost) {
+    const posts = getPosts();
+    const num = posts.findIndex(post => post.id === id);
+    if (num !== -1) {
+        posts[num] = { ...posts[num], ...updatedPost };
+        savePosts(posts);
+    }
+}
+//deletes posts
+function deletePost(id) {
+    let posts = getPosts();
+    posts = posts.filter(post => post.id !== id);
+    savePosts(posts);
 }
