@@ -1,0 +1,5 @@
+create a simple main page with a nav bar at the top that lets you navigate between the three pages.
+Show all created blog posts setup with cards showing a photo, header and text field that is interactive. Use JS to load data from local storage.
+Add a form on the create a post page that allows users to enter a title, text and photo. save data to local storage. Ensure all fields are filled out before submitting form.
+Add the view and edit section.
+Add sleek css styling to make the page look clean and proffessional.

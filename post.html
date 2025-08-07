@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View and Edit</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar">
+        <div class="header">Turners Dynamic Blog Website</div>
+        <ul class="link-container">
+            <li class="link-item"><a href="index.html" class="link">Home</a></li>
+            <li class="link-item"><a href="new-post.html" class="link">Add Post</a></li>
+        </ul>
+    </nav>
+
+    <section class="form-section" id="postSection"></section>
+
+    <script src="script.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const postId = params.get("id");
+
+        const postSection = document.getElementById("postSection");
+        const post = getPost(postId);
+
+        if (post) {
+            // loads selected form
+            postSection.innerHTML = `
+                <form id="editForm">
+                    <h2 style="color: black; margin-top: 80px; font-size: 80px;">Edit Post</h2>
+                    ${post.image ? `<img src="${post.image}" class="blog-image" alt="Post Image" />` : ''}
+                    <label for="editTitle" class="form-label">Title:</label>
+                    <input type="text" id="editTitle" value="${post.title.replace(/"/g, '&quot;')}" required />
+
+                    <label for="editContent" class="form-label">Content:</label>
+                    <textarea id="editContent" required>${post.content}</textarea>
+
+                    <label for="editImage" class="form-label">Image URL:</label>
+                    <input type="text" id="editImage" value="${post.image || ''}" />
+
+                    <button type="submit">Save Changes</button>
+                    <button type="button" id="deleteBtn" class="deleteBtn">Delete Post</button>
+                </form>
+            `;
+            // updates form and saves changes
+            document.getElementById("editForm").onsubmit = function (e) {
+                e.preventDefault();
+                const updatedTitle = document.getElementById("editTitle").value.trim();
+                const updatedContent = document.getElementById("editContent").value.trim();
+                const updatedImage = document.getElementById("editImage").value.trim();
+
+                //updates content
+                updatePost(postId, {
+                    title: updatedTitle,
+                    content: updatedContent,
+                    image: updatedImage
+                });
+
+                alert("Post updated successfully!");
+                window.location.href = 'index.html'; 
+            };
+
+            //deletes post on click and asks user for validation
+            document.getElementById("deleteBtn").onclick = function () {
+                if (confirm("Are you sure you want to delete this post?")) {
+                    deletePost(postId);
+                    alert("Post deleted.");
+                    window.location.href = "index.html";  
+                };
+            };
+        };
+
+
+    </script>
+</body>
+
+</html>
